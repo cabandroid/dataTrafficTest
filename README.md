@@ -1,66 +1,46 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Prueba Técnica
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Esta es una prueba técnica que incluye la creación de una aplicación web en Laravel para gestionar información de personajes de la serie "Rick y Morty". La aplicación consulta un API remoto y almacena los datos en una base de datos SQLite local. Fué realizado en Laravel PHP
 
-## About Laravel
+## Instrucciones para la Ejecución
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+A continuación, se detallan las instrucciones para ejecutar esta prueba técnica en tu entorno local:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### 1. Clonar el Repositorio
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Clona este repositorio en tu máquina local utilizando el siguiente comando:
 
-## Learning Laravel
+git clone https://github.com/cabandroid/dataTrafficTest.git
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### 2. Ejecuta las siguientes migraciones que son necesarias ya que se tuvieron que crear para almacenar nuestros personajes
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+ php artisan migrate --path=database/migrations/2023_08_28_030733_create_characters_table.php
+ php artisan migrate --path=database/migrations/2023_08_28_031719_add_timestamps_to_characters_table.php
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+ ### 3. Instala las dependencias utilizadas
 
-## Laravel Sponsors
+cd dataTrafficPrueba
+composer install
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+### 4. Configura el archivo .env debe ser la ruta local ya que para el crud fué necesario almacenar la .bd en /database
 
-### Premium Partners
+DB_CONNECTION=sqlite
+DB_DATABASE=C:\xampp\htdocs\xampp\dataTrafficPrueba\database\rickandmorty_v1.db
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+###  5. Inicia el servidor
+php artisan serve
+La aplicación estará disponible en http://localhost:8000.
 
-## Contributing
+### 6. Complicaciones
+    Durante el desarrollo de esta prueba técnica, se enfrentaron las siguientes complicaciones:
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+    Acceso a un API Externo: La aplicación consulta un API remoto para obtener datos de la serie. Esto requiere el uso de solicitudes HTTP para recuperar y almacenar datos en la base de datos local.
 
-## Code of Conduct
+    Gestión de SQLite: Se utiliza una base de datos SQLite local para almacenar datos. Configurar correctamente la base de datos y ejecutar las migraciones fue un desafío.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+    Rutas y Controladores: Configurar las rutas y controladores en Laravel para realizar operaciones CRUD en las entidades (personajes, ubicaciones, episodios) fue una parte fundamental del desarrollo.
 
-## Security Vulnerabilities
+    Vistas y Estilos: Crear vistas atractivas y aplicar estilos adecuados para la interfaz de usuario fue un aspecto importante para una experiencia de usuario agradable.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+```bash
