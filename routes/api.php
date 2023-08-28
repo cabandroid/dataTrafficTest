@@ -1,19 +1,17 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CharacterController;
+use App\Http\Controllers\EpisodeController;
+use App\Http\Controllers\LocationController;
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
-*/
-
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+/**Para personajes */
+Route::get('/characters', [CharacterController::class, 'index']);
+Route::get('/characters/{id}', [CharacterController::class, 'show']);
+Route::post('/characters', [CharacterController::class, 'store'])->name('characters.store');
+Route::put('/characters/{id}', [CharacterController::class, 'update'])->name('characters.update');
+Route::delete('/characters/{id}', [CharacterController::class, 'destroy'])->name('characters.destroy');
+/**Para locations */
+Route::get('/locations', [LocationController::class, 'index']);
+/**Para episodes */
+Route::get('/api/episodes', [EpisodeController::class, 'index']);
